@@ -16,3 +16,12 @@ Root Cause Identification: Through advanced analytics, the portal identifies roo
 Report Generation: Based on the analysis, the portal generates comprehensive reports that outline the health and socio-economic status of the village, highlighting key findings and recommendations.
 Access Control: The portal features a hierarchical access system, allowing different levels of government to access relevant data. Gram panchayats can view and act upon data specific to their village, while district authorities have access to aggregated data from all villages within their jurisdiction. State-level authorities can access data from across districts for comprehensive planning and decision-making.
 Actionable Insights: Decision-makers at each level of governance utilize the insights gleaned from the portal to formulate targeted interventions and allocate resources effectively.
+
+![Javatpoint](img1.jpeg)  
+
+![Javatpoint](img2.jpeg)  
+
+![Javatpoint](img3.jpeg)  
+
+![Javatpoint](img4.jpeg)  
+
