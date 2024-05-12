@@ -1,4 +1,4 @@
-## thewatchdogs
+# 'thewatchdogs'
 Problem Statement:Empowering Rural Health Governance in India: An AI-Driven Centralized Portal
 Solution:
 1. Our initiative tackles the complex challenges of rural health in India through the creation of an innovative AI-powered centralized portal. 
@@ -8,7 +8,7 @@ Solution:
 By centralizing data access, our system promotes transparency and accountability across government levels, facilitating swift action and enabling lower authorities to escalate critical issues to higher levels for resolution. Notably, our portal also empowers policy makers with actionable intelligence, guiding evidence-based policy reforms to address systemic challenges.
 5. Through these concerted efforts, we envision a significant enhancement in rural healthcare outcomes and the overall well-being of India's rural populace.
 
-# * Tech Stack-AWS,Generative Ai, Machine Learning, Flask Framework, Python, MongoDB, HTML, CSS, JS, Google Map API. DASH and Plotliy.
+###  Tech Stack-AWS,Generative Ai, Machine Learning, Flask Framework, Python, MongoDB, HTML, CSS, JS, Google Map API. DASH and Plotliy.
 
 WorkFlow:Data Collection: Local health workers stationed in villages collect data pertaining to health conditions, economic status, infrastructure, and transportation accessibility using standardized forms.
 Data Upload: Health workers input the collected data onto the AI-enabled centralized portal, providing a comprehensive snapshot of the village's health landscape.
