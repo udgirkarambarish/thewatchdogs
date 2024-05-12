@@ -1,4 +1,4 @@
-# 'thewatchdogs'
+# `thewatchdogs`
 Problem Statement:Empowering Rural Health Governance in India: An AI-Driven Centralized Portal
 Solution:
 1. Our initiative tackles the complex challenges of rural health in India through the creation of an innovative AI-powered centralized portal. 
@@ -10,7 +10,7 @@ By centralizing data access, our system promotes transparency and accountability
 
 ###  Tech Stack-AWS,Generative Ai, Machine Learning, Flask Framework, Python, MongoDB, HTML, CSS, JS, Google Map API. DASH and Plotliy.
 
-WorkFlow:Data Collection: Local health workers stationed in villages collect data pertaining to health conditions, economic status, infrastructure, and transportation accessibility using standardized forms.
+* **WorkFlow**: Data Collection: Local health workers stationed in villages collect data pertaining to health conditions, economic status, infrastructure, and transportation accessibility using standardized forms.
 Data Upload: Health workers input the collected data onto the AI-enabled centralized portal, providing a comprehensive snapshot of the village's health landscape.
 Data Analysis: The portal utilizes sophisticated AI algorithms to analyze the uploaded data, identifying patterns, trends, and correlations across various parameters.
 Root Cause Identification: Through advanced analytics, the portal identifies root causes behind prevalent health issues and other challenges faced by rural communities.
@@ -18,11 +18,12 @@ Report Generation: Based on the analysis, the portal generates comprehensive rep
 Access Control: The portal features a hierarchical access system, allowing different levels of government to access relevant data. Gram panchayats can view and act upon data specific to their village, while district authorities have access to aggregated data from all villages within their jurisdiction. State-level authorities can access data from across districts for comprehensive planning and decision-making.
 Actionable Insights: Decision-makers at each level of governance utilize the insights gleaned from the portal to formulate targeted interventions and allocate resources effectively.
 
-![Javatpoint](img1.jpeg)  
 
-![Javatpoint](img2.jpeg)  
+![alt text](img1.jpeg)
 
-![Javatpoint](img3.jpeg)  
+![alt text](img2.jpeg)
 
-![Javatpoint](img4.jpeg)  
+![alt text](img3.jpeg)
+
+![alt text](img4.jpeg)
 
