@@ -284,6 +284,72 @@ ul li {
             transform: translateY(-2px);
             box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
         }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        .summary-section {
+            margin-bottom: 20px;
+        }
+
+        .summary-section h1 {
+            border-bottom: 1px solid #cccccc;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .positive-aspects {
+            background-color: #e6f7ff;
+        }
+
+        .problems-faced {
+            background-color: #ffe6e6;
+        }
+
+        .positive-aspects li,
+        .problems-faced li {
+            padding: 10px;
+            border-radius: 5px;
+        }
+          #map {
+            height: 400px;
+            width: 100%;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Drop shadow */
+            animation: fadeIn 1s ease-in-out; /* Fade-in animation */
+            overflow: hidden; /* Hide overflow */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 
@@ -294,26 +360,76 @@ ul li {
         <a href="#vaccination">Vaccination Analysis</a>
         <a href="#Tranportation">Tranportation Analysis</a>
         <a href="#Nutrition">Nutrition Analysis</a>
+    <a href="{{ url_for('feedback') }}">Feedback Analysis</a>
+
         <form class="search-form" action="/export_csv" method="POST">
             <input type="text" name="village_name" class="search-input" placeholder="Enter Village Name...">
             <button class="export-button" type="submit">Export Data</button>
         </form>
+       
      
        
 
 
     </div>
+    <div id="map"></div>
+    
+    <script>
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 10,
+                center: { lat: 19.1383, lng: 77.3208 }, // Default center (Nanded)
+            });
+
+            // Add marker for user's location
+            let userMarker = new google.maps.Marker({
+                map,
+                title: "Your Location",
+            });
+
+            // Add marker for specified coordinates
+            const specifiedCoordinates = { lat: 19.628308, lng: 78.203237 };
+            let specifiedMarker = new google.maps.Marker({
+                position: specifiedCoordinates,
+                map,
+                title: "Specified Location",
+                icon: {
+                    url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png", // Custom marker icon
+                    scaledSize: new google.maps.Size(32, 32) // Custom icon size
+                }
+            });
+
+            // Request permission to access user's location
+            if (navigator.geolocation) {
+                navigator.geolocation.watchPosition((position) => {
+                    const userLocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    map.setCenter(userLocation);
+                    userMarker.setPosition(userLocation);
+                }, (error) => {
+                    console.error('Error getting user location:', error);
+                });
+            } else {
+                console.error('Geolocation is not supported by this browser.');
+            }
+        }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALqW1stUXtMZixCINS26qSogWgxDVQfcI&callback=initMap"></script>
   
     <h2>Village: {{ village_name }}</h2>
     <h2>District: {{ district }}</h2>   
     <p>Current Date and Time: {{ current_datetime }}</p>
+    
    
     
     <span id="currentDate"></span>
     <section id="vaccination">
         <header>Vaccination Analysis </header>
         <div class="heading">Vaccination Information</div>
-    <div class="container"></div>
+   
 <div class="card-container">
     <div class="card">
         <div class="card-header">
@@ -348,6 +464,10 @@ ul li {
         </div>
     </div>
 </div>
+<form class="search-form" action="/generate_report" method="POST">
+    <input type="text" name="village_name" class="search-input" placeholder="Enter Village Name...">
+    <button class="export-button" type="submit">Download Analysisi Report</button>
+</form>
 <iframe src="/dashboard/" width="800" height="600"></iframe>
 <iframe src="/dashboard1/" width="800" height="600"></iframe>
 <iframe src="/dashboard2/" width="800" height="600"></iframe>
@@ -357,7 +477,7 @@ ul li {
 
     <section id="Tranportation">
         <header>Tranportation Analysis </header>
-        <div class="container"></div>
+       
         <div class="card-container">
         <div class="card">
             <div class="card-header">
@@ -452,6 +572,33 @@ ul li {
         <iframe src="/dashboard15/" width="800" height="600"></iframe>
         <iframe src="/dashboard16/" width="800" height="600"></iframe>
         <iframe src="/dashboard17/" width="800" height="600"></iframe>
+        <div class="container">
+            <div class="summary-section problems-faced">
+                <h1>Summary of Problems Faced by Pregnant Women:</h1>
+                <ul>
+                    <li>No Prenatal Care: {{ no_prenatal_care }}</li>
+                    <li>Complications during Pregnancy: {{ complications }}</li>
+                    <li>Limited Access to Healthcare: {{ limited_healthcare_access }}</li>
+                    <li>Financial Barriers: {{ financial_barriers }}</li>
+                    <li>High Doctor Fees: {{ high_doctor_fees }}</li>
+                    <li>Underutilized Government Schemes: {{ underutilized_government_schemes }}</li>
+                    <li>Nutritional Concerns: {{ nutritional_concerns }}</li>
+                </ul>
+            </div>
+        
+            <div class="summary-section positive-aspects">
+                <h1>Summary of Positive Aspects:</h1>
+                <ul>
+                    <li>Received Prenatal Care: {{ received_prenatal_care }}</li>
+                    <li>No Complications during Pregnancy: {{ no_complications }}</li>
+                    <li>Adequate Access to Healthcare: {{ adequate_healthcare_access }}</li>
+                    <li>No Financial Barriers: {{ no_financial_barriers }}</li>
+                    <li>Low Doctor Fees: {{ low_doctor_fees }}</li>
+                    <li>Utilized Government Schemes: {{ utilized_government_schemes }}</li>
+                    <li>Adequate Nutrition: {{ adequate_nutrition }}</li>
+                </ul>
+            </div>
+        </div>
         
     </section>
 
